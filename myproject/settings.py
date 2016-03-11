@@ -149,7 +149,7 @@ STATIC_URL = '/static/'
 #STATICFILES_DIRS = (
 #    os.path.abspath(os.path.join(BASE_DIR, "../../airbook-web/")),
 #    os.path.abspath(os.path.join(BASE_DIR, "../../airbook-loader/")),
-#)
+###)
 
 #STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, "../../airbook-static-root/"))
 STATIC_ROOT = localsetting.STATIC_ROOT
