@@ -64,4 +64,4 @@ env/*
 *~
 
 #localsetting
-myproject/localsetting.py
+localsetting.py
