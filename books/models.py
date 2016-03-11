@@ -21,7 +21,7 @@ class BookCategory(models.Model):
 
 
     def __unicode__(self):
-        return u'%s' % self.tags
+        return u'%s-%s' %(self.tags, self.order)
 
 #class BookShopUserInline(admin.TabularInline):
 #    classes = ('grp-collapse grp-open',)
