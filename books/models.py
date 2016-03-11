@@ -70,7 +70,7 @@ class BookCategoryType(models.Model):
     )
     #type = models.CharField(max_length=30, choices=CATEGORY_TYPE, null=True, blank=True)
     category_type = models.CharField(max_length=30, choices=CATEGORY_TYPE, null=True, blank=True)
-    type = models.CharField(max_length=50)
+    cat_type = models.CharField(max_length=50)
     icon = models.ImageField(upload_to="category_type_image")
 
     def __unicode__(self):
