@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 
 import os
 
+import localsetting
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -67,7 +69,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'airbook_server_193.urls'
+ROOT_URLCONF = 'myproject.urls'
 
 TEMPLATES = [
     {
@@ -85,18 +87,24 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'airbook_server_193.wsgi.application'
+WSGI_APPLICATION = 'myproject.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+      'default': {
+          'ENGINE': localsetting.ENGINE,
+          'NAME': localsetting.NAME,
+          'USER': localsetting.USER,
+          'PASSWORD': localsetting.PASSWORD,
+          'HOST': localsetting.HOST,
+          'PORT': localsetting.PORT,
+      }
+  }
+
+
 
 
 # Password validation
@@ -143,9 +151,11 @@ STATICFILES_DIRS = (
     os.path.abspath(os.path.join(BASE_DIR, "../../airbook-loader/")),
 )
 
-STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, "../../airbook-static-root/"))
+#STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, "../../airbook-static-root/"))
+STATIC_ROOT = localsetting.STATIC_ROOT
 
-MEDIA_ROOT = BASE_DIR
+
+MEDIA_ROOT = os.path.abspath(os.path.join(BASE_DIR, "/media-root/")),
 MEDIA_URL = '/media/'
 
 
@@ -170,11 +180,6 @@ SWAGGER_SETTINGS = {
 }
 
 AUTH_USER_MODEL = 'authtools.User'
-
-
-
-
-
 
 
 
