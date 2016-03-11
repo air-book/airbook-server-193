@@ -48,8 +48,8 @@ admin.site.register(CoverImposition, CoverImpositionAdmin)
 
 
 class BookCategoryAdmin(admin.ModelAdmin):
-    list_display = ['order', 'tags', ]
-    ordering = ['order', ]
+    list_display = ['tags', ]
+    ordering = ['tags', ]
     
 admin.site.register(BookCategory, BookCategoryAdmin)
 
