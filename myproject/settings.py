@@ -154,8 +154,8 @@ STATIC_URL = '/static/'
 #STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, "../../airbook-static-root/"))
 STATIC_ROOT = os.path.abspath(localsetting.STATIC_ROOT)
 
+MEDIA_ROOT = os.path.abspath(localsetting.MEDIA_ROOT)
 
-MEDIA_ROOT = os.path.abspath(os.path.join(BASE_DIR, "/media-root/"))
 MEDIA_URL = '/media/'
 
 
