@@ -13,8 +13,8 @@ from jsonfield import JSONField
 
 
 class BookCategory(models.Model):
-    tags = models.CharField(max_length=16)
-    order = models.IntegerField(null=True, blank=True, default=0)
+    tags = models.CharField(max_length=16, help_text="Aggiungere massimo 3 Tags")
+    #order = models.IntegerField(null=True, blank=True, default=0)
 
     class Meta:
         ordering = ['order']
@@ -70,6 +70,7 @@ class BookCategoryType(models.Model):
     )
     #type = models.CharField(max_length=30, choices=CATEGORY_TYPE, null=True, blank=True)
     category_type = models.CharField(max_length=30, choices=CATEGORY_TYPE, null=True, blank=True)
+    type = models.CharField(max_length=50)
     icon = models.ImageField(upload_to="category_type_image")
 
     def __unicode__(self):

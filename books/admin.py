@@ -5,8 +5,8 @@ from .models import BookShop, Book, BookCategory, BookAuthor, BookImage, BookSho
 BookEditor, CoverMaterial, CoverBack, CoverRilegatura, CoverImposition, BookCategoryType
 
 class BookCategoryTypeAdmin(admin.ModelAdmin):
-    list_display = ['category_type', 'icon', ]
-    ordering = ['category_type', ]
+    list_display = ['category_type', 'icon', 'type']
+    ordering = ['type', ]
     #fieldsets = [("Categorie", { 'fields': ('category_type', 'icon',),   'classes': ('grp-collapse grp-open', ), }),]
     
 admin.site.register(BookCategoryType, BookCategoryTypeAdmin)
@@ -100,7 +100,7 @@ class BookAdmin(admin.ModelAdmin):
                 ("Tipologia", { 'fields': ('volumes_type', 'volumi_raccolta', 'numero_volume_della_raccolta', 'category_type', ), 
                                 'classes': ('grp-collapse grp-open', ), 
                                            }),                
-                ("Condizioni", { 'fields': ('conditions', 'conditions_detail', ('box', 'cover', 'cover_material'), 'back', 'rilegatura', 'imposition', ), 
+                ("Condizioni", { 'fields': ('conditions', 'conditions_detail', ('box', 'cover', 'cover_material'), ), 
                                  'classes': ('grp-collapse grp-open', ), 
                                            }),                
                 ("Caratteristiche", { 'fields': ('page_number',  ('width', 'weigth', 'heigth'), ('back', 'rilegatura', 'imposition',), 'tags', ), 
