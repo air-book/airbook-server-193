@@ -5,7 +5,7 @@ from .models import BookShop, Book, BookCategory, BookAuthor, BookImage, BookSho
 BookEditor, CoverMaterial, CoverBack, CoverRilegatura, CoverImposition, BookCategoryType
 
 class BookCategoryTypeAdmin(admin.ModelAdmin):
-    list_display = ['category_type', 'icon', 'cat_type']
+    list_display = ['icon', 'cat_type']
     ordering = ['cat_type', ]
     #fieldsets = [("Categorie", { 'fields': ('category_type', 'icon',),   'classes': ('grp-collapse grp-open', ), }),]
     
