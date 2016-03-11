@@ -17,11 +17,11 @@ class BookCategory(models.Model):
     #order = models.IntegerField(null=True, blank=True, default=0)
 
     class Meta:
-        ordering = ['order']
+        ordering = ['tags']
 
 
     def __unicode__(self):
-        return u'%s-%s' %(self.tags, self.order)
+        return u'%s' %(self.tags)
 
 #class BookShopUserInline(admin.TabularInline):
 #    classes = ('grp-collapse grp-open',)
