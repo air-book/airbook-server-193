@@ -97,7 +97,7 @@ class BookAdmin(admin.ModelAdmin):
                 ("Anagrafica", { 'fields': (('title_art', 'title',), 'subtitle', ('authors', ), ('editor', 'publish', 'language', ), 'description' ), 
                                  'classes': ('grp-collapse grp-open', ), 
                                            }),
-                ("Tipologia", { 'fields': ('volumes_type', 'volumi_raccolta', 'numero_volume_della_raccolta', 'category_type', ), 
+                ("Tipologia", { 'fields': ('volumes_type', 'volumi_raccolta', 'numero_volume_della_raccolta', 'cat_type', ), 
                                 'classes': ('grp-collapse grp-open', ), 
                                            }),                
                 ("Condizioni", { 'fields': ('conditions', 'conditions_detail', ('box', 'cover', 'cover_material'), ), 
