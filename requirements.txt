@@ -1,0 +1,14 @@
+Django==1.9.2
+Markdown==2.6.5
+argparse==1.2.1
+django-geojson==2.9.0
+django-grappelli==2.8.1
+django-jquery==1.9.1
+django-leaflet==0.18.0
+django-markdown==0.8.4
+djangocms-admin-style==1.1.0
+djangorestframework==3.3.2
+psycopg2==2.6.1
+six==1.10.0
+suds==0.4
+wsgiref==0.1.2
