@@ -5,8 +5,8 @@ from .models import BookShop, Book, BookCategory, BookAuthor, BookImage, BookSho
 BookEditor, CoverMaterial, CoverBack, CoverRilegatura, CoverImposition, BookCategoryType
 
 class BookCategoryTypeAdmin(admin.ModelAdmin):
-    list_display = ['icon', 'caterory_type']
-    ordering = ['caterory_type', ]
+    list_display = ['icon', 'category_type']
+    ordering = ['category_type', ]
     #fieldsets = [("Categorie", { 'fields': ('category_type', 'icon',),   'classes': ('grp-collapse grp-open', ), }),]
     
 admin.site.register(BookCategoryType, BookCategoryTypeAdmin)
@@ -97,7 +97,7 @@ class BookAdmin(admin.ModelAdmin):
                 ("Anagrafica", { 'fields': (('title_art', 'title',), 'subtitle', ('authors', ), ('editor', 'publish', 'language', ), 'description' ), 
                                  'classes': ('grp-collapse grp-open', ), 
                                            }),
-                ("Tipologia", { 'fields': ('volumes_type', 'volumi_raccolta', 'numero_volume_della_raccolta', 'caterory_type', ), 
+                ("Tipologia", { 'fields': ('volumes_type', 'volumi_raccolta', 'numero_volume_della_raccolta', 'category_type', ), 
                                 'classes': ('grp-collapse grp-open', ), 
                                            }),                
                 ("Condizioni", { 'fields': ('conditions', 'conditions_detail', ('box', 'cover', 'cover_material'), ), 
@@ -110,7 +110,7 @@ class BookAdmin(admin.ModelAdmin):
                                  'classes': ('grp-collapse grp-open', ), 
                                            }),                
     ]    
-    filter_horizontal = ('authors', 'caterory_type', 'tags', )
+    filter_horizontal = ('authors', 'category_type', 'tags', )
     change_list_template = "admin/change_list_filter_sidebar.html"
     inlines = ([BookImageInline])
     search_fields = ['title', 'title_art', 'tags__tags']
