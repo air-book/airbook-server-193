@@ -57,17 +57,17 @@ class BookAuthor(models.Model):
 
 
 class BookCategoryType(models.Model):
-    CATEGORY_TYPE = (
-    ('PRIMA EDIZIONE', 'Prima Edizione'),
-    ('EDIZIONE ECONOMICA', 'Edizione Economica'),
-    ('LIBRO ANTICO', 'Libro Antico 400'),
-    ('LIBRO ANTICO', 'Libro Antico 500'),
-    ('LIBRO ANTICO', 'Libro Antico 600'),
-    ('LIBRO ANTICO', 'Libro Antico 700'),
-    ('LIBRO ANTICO', 'Libro Antico 800'),
-    ('LIBRO AUTOGRAFATO', 'Libro Autografato'),
-    ('LIBRO D'' ARTISTA', 'Libro d'' Artista'),
-    )
+#    CATEGORY_TYPE = (
+#    ('PRIMA EDIZIONE', 'Prima Edizione'),
+#    ('EDIZIONE ECONOMICA', 'Edizione Economica'),
+#    ('LIBRO ANTICO', 'Libro Antico 400'),
+#    ('LIBRO ANTICO', 'Libro Antico 500'),
+#    ('LIBRO ANTICO', 'Libro Antico 600'),
+#    ('LIBRO ANTICO', 'Libro Antico 700'),
+#    ('LIBRO ANTICO', 'Libro Antico 800'),
+#    ('LIBRO AUTOGRAFATO', 'Libro Autografato'),
+#    ('LIBRO D'' ARTISTA', 'Libro d'' Artista'),
+#    )
     #type = models.CharField(max_length=30, choices=CATEGORY_TYPE, null=True, blank=True)
     #category_type = models.CharField(max_length=30, choices=CATEGORY_TYPE, null=True, blank=True)
     cat_type = models.CharField(max_length=50)
