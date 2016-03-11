@@ -110,7 +110,7 @@ class BookAdmin(admin.ModelAdmin):
                                  'classes': ('grp-collapse grp-open', ), 
                                            }),                
     ]    
-    filter_horizontal = ('authors', 'category_type', 'tags', )
+    filter_horizontal = ('authors', 'cat_type', 'tags', )
     change_list_template = "admin/change_list_filter_sidebar.html"
     inlines = ([BookImageInline])
     search_fields = ['title', 'title_art', 'tags__tags']
