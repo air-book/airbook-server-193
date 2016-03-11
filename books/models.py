@@ -70,7 +70,7 @@ class BookCategoryType(models.Model):
 #    )
     #type = models.CharField(max_length=30, choices=CATEGORY_TYPE, null=True, blank=True)
     #category_type = models.CharField(max_length=30, choices=CATEGORY_TYPE, null=True, blank=True)
-    cat_type = models.CharField(max_length=50)
+    caterory_type = models.CharField(max_length=50)
     icon = models.ImageField(upload_to="category_type_image")
 
     def __unicode__(self):
@@ -163,7 +163,7 @@ class Book(models.Model):
     tags = models.ManyToManyField(BookCategory)
     isbn_code_10 = models.CharField(max_length=10, null=True, blank=True)
     isbn_code_13 = models.CharField(max_length=13, null=True, blank=True)
-    cat_type = models.ManyToManyField(BookCategoryType)
+    caterory_type = models.ManyToManyField(BookCategoryType)
     saleable = models.BooleanField(default=False)
     publish = models.BooleanField(default=True)
     note = models.CharField(max_length=1000, null=True, blank=True)
