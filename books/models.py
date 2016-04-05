@@ -49,8 +49,8 @@ class BookShopUser(models.Model):
 
 
 class BookAuthor(models.Model):
-    name = models.CharField(max_length=200, null=True, blank=True)
-    nationality = models.CharField(max_length=100, null=True, blank=True)
+    name = models.CharField(max_length=200, null=True, blank=True, help_text='Inserire il nome ed il cognome dell''autore')
+    #nationality = models.CharField(max_length=100, null=True, blank=True)
 
     def __unicode__(self):
         return u'%s' %(self.name)
@@ -71,7 +71,7 @@ class BookCategoryType(models.Model):
     #type = models.CharField(max_length=30, choices=CATEGORY_TYPE, null=True, blank=True)
     #category_type = models.CharField(max_length=30, choices=CATEGORY_TYPE, null=True, blank=True)
     category_type = models.CharField(max_length=50)
-    icon = models.ImageField(upload_to="category_type_image")
+    #icon = models.ImageField(upload_to="category_type_image")
 
     def __unicode__(self):
         return u'%s' %(self.category_type)
@@ -111,7 +111,7 @@ class CoverImposition(models.Model):
 
 BOOK_CONDITIONS = (
     (0, 'Pessimo'),
-    (1, 'Medio'),
+    (1, 'Accettabile'),
     (2, 'Buono'),
     (3, 'Ottimo'),
     (4, 'Nuovo'),
@@ -132,8 +132,9 @@ VOLUMES_TYPE = (
 
 
 class Book(models.Model):
+    #automatizzare la libreria in base all'utente.
     bookshop = models.ForeignKey(BookShop)
-    title_art = models.CharField(max_length=10)
+    title_art = models.CharField(max_length=10, null=True, blank=True)
     title = models.CharField(max_length=200)
     def _title_complete(self):
         return '%s %s'%(self.title_art, self.title) 
@@ -154,10 +155,11 @@ class Book(models.Model):
     rilegatura = models.ForeignKey(CoverRilegatura)
     imposition = models.ForeignKey(CoverImposition)
     page_number = models.IntegerField(null=True, blank=True)
-    width = models.IntegerField(null=True, blank=True)
-    weigth = models.IntegerField(null=True, blank=True)
-    heigth = models.IntegerField(null=True, blank=True)
-    description = models.CharField(max_length=2000)
+    width = models.IntegerField('Larghezza', null=True, blank=True)
+    weigth = models.IntegerField('Peso', null=True, blank=True)
+    heigth = models.IntegerField('Altezza', null=True, blank=True)
+    spessore = models.IntegerField('Spessore', null=True, blank=True)
+    description = models.CharField(max_length=2000, null=True, blank=True)
     language = models.CharField(max_length=20, null=True, blank=True)    
     archive_code = models.CharField(max_length=10, null=True, blank=True)
     tags = models.ManyToManyField(BookCategory)
@@ -165,7 +167,7 @@ class Book(models.Model):
     isbn_code_13 = models.CharField(max_length=13, null=True, blank=True)
     category_type = models.ManyToManyField(BookCategoryType)
     saleable = models.BooleanField(default=False)
-    publish = models.BooleanField(default=True)
+    #publish = models.BooleanField(default=True)
     note = models.CharField(max_length=1000, null=True, blank=True)
     altri_canali = models.CharField(max_length=1000, null=True, blank=True)
 

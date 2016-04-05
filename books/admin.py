@@ -5,7 +5,7 @@ from .models import BookShop, Book, BookCategory, BookAuthor, BookImage, BookSho
 BookEditor, CoverMaterial, CoverBack, CoverRilegatura, CoverImposition, BookCategoryType
 
 class BookCategoryTypeAdmin(admin.ModelAdmin):
-    list_display = ['icon', 'category_type']
+    list_display = ['category_type', ]
     ordering = ['category_type', ]
     #fieldsets = [("Categorie", { 'fields': ('category_type', 'icon',),   'classes': ('grp-collapse grp-open', ), }),]
     
@@ -55,7 +55,7 @@ admin.site.register(BookCategory, BookCategoryAdmin)
 
 
 class BookAuthorAdmin(admin.ModelAdmin):
-    list_display = ['name', 'nationality', ]
+    list_display = ['name', ]
     ordering = ['name', ]
     
 admin.site.register(BookAuthor, BookAuthorAdmin)
@@ -91,11 +91,11 @@ class BookAdmin(admin.ModelAdmin):
     list_display = ('id', 'bookshop', 'title_complete', 'editor', 'conditions', 'price', 'cover', 'saleable')
     list_filter = ['bookshop', 'editor', 'authors', 'volumes_type', 'conditions', 'cover', 'cover_material', 'box', 'back', 'rilegatura', 'imposition', ]
     fieldsets = [
-                ("Libreria", { 'fields': ('bookshop', ('price', 'saleable'), ('isbn_code_10', 'isbn_code_13'), 'altri_canali'), 
-                               'classes': ('grp-collapse grp-open', ), 
-                                           }),
                 ("Anagrafica", { 'fields': (('title_art', 'title',), 'subtitle', ('authors', ), ('editor', 'publish', 'language', ), 'description' ), 
                                  'classes': ('grp-collapse grp-open', ), 
+                                           }),
+                ("Libreria", { 'fields': ('bookshop', ('price', 'saleable'), ('isbn_code_10', 'isbn_code_13'), 'altri_canali'), 
+                               'classes': ('grp-collapse grp-open', ), 
                                            }),
                 ("Tipologia", { 'fields': ('volumes_type', 'volumi_raccolta', 'numero_volume_della_raccolta', 'category_type', ), 
                                 'classes': ('grp-collapse grp-open', ), 
