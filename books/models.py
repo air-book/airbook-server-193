@@ -14,20 +14,12 @@ from jsonfield import JSONField
 
 class BookCategory(models.Model):
     tags = models.CharField(max_length=16, help_text="Aggiungere massimo 3 Tags")
-    #order = models.IntegerField(null=True, blank=True, default=0)
 
     class Meta:
         ordering = ['tags']
 
-
     def __unicode__(self):
         return u'%s' %(self.tags)
-
-#class BookShopUserInline(admin.TabularInline):
-#    classes = ('grp-collapse grp-open',)
-#    model = Allegatoistanza
-#    extra = 0
-
 
 class BookShop(models.Model):
     name = models.CharField(max_length=200)
@@ -49,29 +41,17 @@ class BookShopUser(models.Model):
 
 
 class BookAuthor(models.Model):
-    name = models.CharField(max_length=200, null=True, blank=True, help_text='Inserire il nome ed il cognome dell''autore')
-    #nationality = models.CharField(max_length=100, null=True, blank=True)
+    name = models.CharField('Autore', max_length=200, null=True, blank=True, help_text='Inserire il nome ed il cognome dell''autore')
+
+    class Meta:
+      verbose_name_plural = "Autori"
 
     def __unicode__(self):
         return u'%s' %(self.name)
 
 
 class BookCategoryType(models.Model):
-#    CATEGORY_TYPE = (
-#    ('PRIMA EDIZIONE', 'Prima Edizione'),
-#    ('EDIZIONE ECONOMICA', 'Edizione Economica'),
-#    ('LIBRO ANTICO', 'Libro Antico 400'),
-#    ('LIBRO ANTICO', 'Libro Antico 500'),
-#    ('LIBRO ANTICO', 'Libro Antico 600'),
-#    ('LIBRO ANTICO', 'Libro Antico 700'),
-#    ('LIBRO ANTICO', 'Libro Antico 800'),
-#    ('LIBRO AUTOGRAFATO', 'Libro Autografato'),
-#    ('LIBRO D'' ARTISTA', 'Libro d'' Artista'),
-#    )
-    #type = models.CharField(max_length=30, choices=CATEGORY_TYPE, null=True, blank=True)
-    #category_type = models.CharField(max_length=30, choices=CATEGORY_TYPE, null=True, blank=True)
     category_type = models.CharField(max_length=50)
-    #icon = models.ImageField(upload_to="category_type_image")
 
     def __unicode__(self):
         return u'%s' %(self.category_type)
@@ -134,19 +114,19 @@ VOLUMES_TYPE = (
 class Book(models.Model):
     #automatizzare la libreria in base all'utente.
     bookshop = models.ForeignKey(BookShop)
-    title_art = models.CharField(max_length=10, null=True, blank=True)
-    title = models.CharField(max_length=200)
+    title_art = models.CharField('Articolo del titolo', max_length=10, null=True, blank=True)
+    title = models.CharField('Titolo', max_length=200)
     def _title_complete(self):
         return '%s %s'%(self.title_art, self.title) 
     title_complete = property(_title_complete)    
-    subtitle = models.CharField(max_length=500)
+    subtitle = models.TextField(max_length=1000,null=True, blank=True)
     authors = models.ManyToManyField(BookAuthor)
     editor = models.ForeignKey(BookEditor)
     volumes_type = models.IntegerField(choices=VOLUMES_TYPE)
     volumi_raccolta = models.IntegerField(null=True, blank=True, help_text='Numero totale dei volumi che compongono la raccolta')
     numero_volume_della_raccolta = models.IntegerField(null=True, blank=True, help_text='Numero del volumi all''interno della raccolta')
     conditions = models.IntegerField(choices=BOOK_CONDITIONS, null=True, blank=True)
-    conditions_detail = JSONField(null=True, blank=True)    
+    conditions_detail = models.TextField(max_length=5000,null=True, blank=True, help_text="Descrizione dettagliata delle condizioni del libro")
     price = models.FloatField(null=True, blank=True)
     cover = models.CharField(max_length=20, choices=COVER_TYPE, null=True, blank=True)
     box = models.BooleanField(default=False)
@@ -159,16 +139,15 @@ class Book(models.Model):
     weigth = models.IntegerField('Peso', null=True, blank=True)
     heigth = models.IntegerField('Altezza', null=True, blank=True)
     spessore = models.IntegerField('Spessore', null=True, blank=True)
-    description = models.CharField(max_length=2000, null=True, blank=True)
-    language = models.CharField(max_length=20, null=True, blank=True)    
+    description = models.TextField('Descrizione', max_length=2000, null=True, blank=True, help_text="Ulteriore descrizione")
+    language = models.CharField('Lingua', max_length=20, null=True, blank=True)    
     archive_code = models.CharField(max_length=10, null=True, blank=True)
     tags = models.ManyToManyField(BookCategory)
     isbn_code_10 = models.CharField(max_length=10, null=True, blank=True)
     isbn_code_13 = models.CharField(max_length=13, null=True, blank=True)
     category_type = models.ManyToManyField(BookCategoryType)
     saleable = models.BooleanField(default=False)
-    #publish = models.BooleanField(default=True)
-    note = models.CharField(max_length=1000, null=True, blank=True)
+    note = models.TextField(max_length=1000,null=True, blank=True, help_text="Ulteriori note")
     altri_canali = models.CharField(max_length=1000, null=True, blank=True)
 
 

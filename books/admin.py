@@ -91,7 +91,7 @@ class BookAdmin(admin.ModelAdmin):
     list_display = ('id', 'bookshop', 'title_complete', 'editor', 'conditions', 'price', 'cover', 'saleable')
     list_filter = ['bookshop', 'editor', 'authors', 'volumes_type', 'conditions', 'cover', 'cover_material', 'box', 'back', 'rilegatura', 'imposition', ]
     fieldsets = [
-                ("Anagrafica", { 'fields': (('title_art', 'title',), 'subtitle', ('authors', ), ('editor', 'publish', 'language', ), 'description' ), 
+                ("Anagrafica", { 'fields': (('title_art', 'title',), 'subtitle', ('authors', ), ('editor', 'language', ), 'description' ), 
                                  'classes': ('grp-collapse grp-open', ), 
                                            }),
                 ("Libreria", { 'fields': ('bookshop', ('price', 'saleable'), ('isbn_code_10', 'isbn_code_13'), 'altri_canali'), 
