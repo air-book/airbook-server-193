@@ -91,11 +91,8 @@ class BookAdmin(admin.ModelAdmin):
     list_display = ('id', 'bookshop', 'title_complete', 'editor', 'conditions', 'price', 'cover', 'saleable')
     list_filter = ['bookshop', 'editor', 'authors', 'volumes_type', 'conditions', 'cover', 'cover_material', 'box', 'back', 'rilegatura', 'imposition', ]
     fieldsets = [
-                ("Anagrafica", { 'fields': (('title_art', 'title',), 'subtitle', ('authors', ), ('editor', 'language', 'publication_place', 'publication_year', 'publication_month'), 'description' ), 
+                ("Anagrafica", { 'fields': (('title_art', 'title', ), 'subtitle', ('authors', ), ('editor', 'publication_place'), ('publication_year', 'publication_month'), 'language', 'description' , ('isbn_code_10', 'isbn_code_13') ), 
                                  'classes': ('grp-collapse grp-open', ), 
-                                           }),
-                ("Libreria", { 'fields': ('bookshop', ('price', 'saleable'), ('isbn_code_10', 'isbn_code_13'), 'altri_canali'), 
-                               'classes': ('grp-collapse grp-open', ), 
                                            }),
                 ("Tipologia", { 'fields': ('volumes_type', 'volumi_raccolta', 'numero_volume_della_raccolta', 'category_type', ), 
                                 'classes': ('grp-collapse grp-open', ), 
@@ -108,7 +105,10 @@ class BookAdmin(admin.ModelAdmin):
                                            }),                
                 ("Note", { 'fields': ('note', ), 
                                  'classes': ('grp-collapse grp-open', ), 
-                                           }),                
+                                           }),
+                ("Vendita", { 'fields': ('bookshop', ('price', 'saleable'), 'altri_canali'), 
+                               'classes': ('grp-collapse grp-open', ), 
+                                           }),                                                           
     ]    
     filter_horizontal = ('authors', 'category_type', 'tags', )
     change_list_template = "admin/change_list_filter_sidebar.html"

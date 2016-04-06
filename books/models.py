@@ -126,7 +126,7 @@ class Book(models.Model):
     publication_year = models.IntegerField('Anno di pubblicazione', null=True, blank=True)
     publication_month = models.IntegerField('Mese di pubblicazione', null=True, blank=True)
     volumes_type = models.IntegerField(choices=VOLUMES_TYPE)
-    volumi_raccolta = models.IntegerField(null=True, blank=True, help_text='Numero totale dei volumi che compongono la raccolta')
+    volumi_raccolta = models.IntegerField(null=True, blank=True, help_text='Elenco dei numeri che compongono la raccolta separati da virgole')
     numero_volume_della_raccolta = models.IntegerField(null=True, blank=True, help_text='Numero del volumi all''interno della raccolta')
     conditions = models.IntegerField(choices=BOOK_CONDITIONS, null=True, blank=True)
     conditions_detail = models.TextField(max_length=5000,null=True, blank=True, help_text="Descrizione dettagliata delle condizioni del libro")
